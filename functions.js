@@ -6,7 +6,8 @@
  * - returns undefined if no matching book is found
  ****************************************************************/
 function getBookById(bookId, books) {
-  // Your code goes here
+    let bookWanted = books.filter(book => book.id === bookId);
+    return bookWanted[0]
 }
 
 /**************************************************************
@@ -17,7 +18,8 @@ function getBookById(bookId, books) {
  * - returns undefined if no matching author is found
  ****************************************************************/
 function getAuthorByName(authorName, authors) {
-  // Your code goes here
+    let authorWanted = authors.filter(author => author.name.toLowerCase() === authorName.toLowerCase());
+    return authorWanted[0]
 }
 
 /**************************************************************
@@ -26,9 +28,20 @@ function getAuthorByName(authorName, authors) {
  * - returns an array of objects with the format:
  *    [{ author: <NAME>, bookCount: <NUMBER_OF_BOOKS> }]
  ****************************************************************/
+
+
 function bookCountsByAuthor(authors) {
-  // Your code goes here
+    let formatedAuthors = authors.map(author => {
+        let m = {}
+        m.author = author.name
+        m.bookCount = author.books.length
+        return m
+
+    })
+
+    return formatedAuthors
 }
+
 
 /**************************************************************
  * booksByColor(books):
@@ -37,12 +50,27 @@ function bookCountsByAuthor(authors) {
  *   and the values are arrays of book titles:
  *    { <COLOR>: [<BOOK_TITLES>] }
  ****************************************************************/
+
+// { white: ["12 Rules ...", "A Dance ...", ...], yellow: ["A Clash ...", ...]}
 function booksByColor(books) {
-  const colors = {};
 
-  // Your code goes here
 
-  return colors;
+    let formatedColor = books.map(book => {
+        const bookColor = {}; // color
+
+        bookColor.color = book.color
+        bookColor.color = books.forEach(book => {
+            const bookNames = [book.title] // book names
+
+
+        })
+
+        return bookColor;
+
+
+    })
+
+    return formatedColor
 }
 
 /**************************************************************
@@ -54,7 +82,7 @@ function booksByColor(books) {
  *    ["The Hitchhikers Guide", "The Meaning of Liff"]
  ****************************************************************/
 function titlesByAuthorName(authorName, authors, books) {
-  // Your code goes here
+    // Your code goes here
 }
 
 /**************************************************************
@@ -65,7 +93,7 @@ function titlesByAuthorName(authorName, authors, books) {
  * Note: assume there will never be a tie
  ****************************************************************/
 function mostProlificAuthor(authors) {
-  // Your code goes here
+    // Your code goes here
 }
 
 /**************************************************************
@@ -92,7 +120,7 @@ function mostProlificAuthor(authors) {
  * BONUS: REMOVE DUPLICATE BOOKS
  ****************************************************************/
 function relatedBooks(bookId, authors, books) {
-  // Your code goes here
+    // Your code goes here
 }
 
 /**************************************************************
@@ -102,18 +130,18 @@ function relatedBooks(bookId, authors, books) {
  *   co-authored the greatest number of books
  ****************************************************************/
 function friendliestAuthor(authors) {
-  // Your code goes here
+    // Your code goes here
 }
 
 module.exports = {
-  getBookById,
-  getAuthorByName,
-  bookCountsByAuthor,
-  booksByColor,
-  titlesByAuthorName,
-  mostProlificAuthor,
-  relatedBooks,
-  friendliestAuthor
+    getBookById,
+    getAuthorByName,
+    bookCountsByAuthor,
+    booksByColor,
+    titlesByAuthorName,
+    mostProlificAuthor,
+    relatedBooks,
+    friendliestAuthor
 };
 
 /**
@@ -124,7 +152,7 @@ module.exports = {
 // const authors = require("./authors.json");
 // const books = require("./books.json");
 
-// console.log(getBookById(12, books));
+//console.log(getBookById(12, books));
 // console.log(getAuthorByName("J.K. Rowling", authors));
 // console.log(bookCountsByAuthor(authors));
 // console.log(booksByColor(books));
